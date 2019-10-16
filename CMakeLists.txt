@@ -157,6 +157,10 @@ add_executable(sample src/sample.cpp)
 target_link_libraries(sample ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 add_executable(projection_a src/projection_a.cpp)
 target_link_libraries(projection_a ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+add_executable(projection_b src/projection_b.cpp)
+target_link_libraries(projection_b ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+add_executable(projection_c src/projection_c.cpp)
+target_link_libraries(projection_c ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 #############
 ## Install ##
 #############
