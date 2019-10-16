@@ -12,7 +12,8 @@ def black_img():
 
     rospy.set_param("black_img/switch", 1)
 
-    black_image = np.zeros((678,1024,3),np.uint8)
+    # black_image = np.zeros((768,1024,3),np.uint8)
+    black_image = np.ones((768,1024,3),np.uint8)*255
 
     cv2.namedWindow('window')
     cv2.namedWindow('screen', cv2.WINDOW_NORMAL)
@@ -25,7 +26,6 @@ def black_img():
         sys.exit()
       else:
         pass
-
 
 
 if __name__ == '__main__':
