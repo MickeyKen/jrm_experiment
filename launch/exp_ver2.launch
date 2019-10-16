@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="jrm_experiment" name="projection_a" type="projection_a" output="screen"/>
+
+    <node pkg="jrm_experiment" name="black_img" type="black_img.py" output="screen"/>
+
+</launch>
