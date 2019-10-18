@@ -27,9 +27,15 @@ void Callback(const std_msgs::Int16& msg)
   if (exp_num >= 9 && exp_num <= 12) {
     ///// decide image size in real world
     float size = 800 / 2;
+    int ran = rand() % 10;
+    if (ran % 2 == 0) {
+      ran = ran + 1;
+    } else {
+
+    }
     ///// get image and resize projectr size
     std::string file_dir = "/home/ud/catkin_ws/src/jrm_experiment/src/image/";
-    std::string input_file_path = file_dir + "e3_180.png";
+    std::string input_file_path = file_dir + std::to_string(ran) + ".png";
     cv::Mat source_img = cv::imread(input_file_path, cv::IMREAD_UNCHANGED);
     int ColumnOfNewImage = 1024;
     int RowsOfNewImage = 768;
@@ -45,7 +51,7 @@ void Callback(const std_msgs::Int16& msg)
       resize(source_img, source_img, cv::Size(ColumnOfNewImage,RowsOfNewImage));
       cv::Mat M = (cv::Mat_<double>(3,3) << -0.46373082766843, -0.391328023159111, 901.1663818359388, 0.05576542651957173, -0.07783323985820123, 386.7452392578139, -0.0001504435708675367, 0.0002103010190235412, 1);
       cv::warpPerspective( source_img, warp_img, M, source_img.size());
-      cv::namedWindow( "screen_c" );
+      cv::namedWindow( "screen_c" , CV_WINDOW_NORMAL);
       cv::setWindowProperty("screen_c",CV_WND_PROP_FULLSCREEN,CV_WINDOW_FULLSCREEN);
       cv::imshow("screen_c", warp_img);
       cv::waitKey(1);
