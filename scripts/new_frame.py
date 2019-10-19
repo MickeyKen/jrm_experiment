@@ -20,7 +20,7 @@ class Control():
 
         float_pan = Float64()
         float_tilt = Float64()
-        float_tilt = -1.57
+        float_pan = -1.57
 
         exp_num = 0
         exp_pos = 1
@@ -32,11 +32,8 @@ class Control():
 
         while True:
             a = input("Input exp_num: >>")
-            # print a
             current_pos = rospy.get_param("exp_pos")
             rospy.set_param("/exp_miki_img/switch", 0)
-
-            pub_pan.publish(float_pan)
             pub_tilt.publish(float_tilt)
             time.sleep(3)
 

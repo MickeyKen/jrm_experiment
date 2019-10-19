@@ -6,19 +6,18 @@ import time
 from dynamixel_controllers.srv import SetSpeed
 
 def callback(data):
-    # print data.data
+    time.sleep(2)
+
     pub_tilt = rospy.Publisher('tilt_controller/command', Float64, queue_size=10)
     exp_num = rospy.get_param("/exp_num")
 
     tilt_message = Float64()
 
-    time.sleep(2)
-
     tilt_speed= 0.3
 
 
     if (exp_num == 1 or exp_num == 5 or exp_num == 9):
-        tilt_speed= 0.5
+        tilt_speed= 0.3
 
     # slow
     elif (exp_num == 2 or exp_num  == 6 or exp_num == 10):
@@ -52,16 +51,9 @@ def callback(data):
     set_tilt_speed = rospy.ServiceProxy('/tilt_controller/set_speed', SetSpeed)
     set_tilt_speed(tilt_speed)
 
+    # angular
     tilt_message = 0.5
-
     pub_tilt.publish(tilt_message)
-
-    time.sleep(3)
-
-    tilt_speed = 0.5
-    set_tilt_speed(tilt_speed)
-
-
 
 
 def experiment_pantilt():
