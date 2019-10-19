@@ -44,10 +44,12 @@ class Control():
                     pass
                 elif (current_pos == 2):
                     self.youbot_service("x", -200, 1000)
+                    time.sleep(1)
                     self.youbot_service("y", -200, 2500)
 
                 elif (current_pos == 3):
                     self.youbot_service("x", -200, 6000)
+                    time.sleep(1)
                     self.youbot_service("y", -200, 2500)
 
                 else:
@@ -62,6 +64,7 @@ class Control():
 
                 if (current_pos == 1):
                     self.youbot_service("y", 200, 2500)
+                    time.sleep(1)
                     self.youbot_service("x", 200, 1000)
 
                 elif (current_pos == 2):
@@ -82,6 +85,7 @@ class Control():
 
                 if (current_pos == 1):
                     self.youbot_service("y", 200, 2500)
+                    time.sleep(1)
                     self.youbot_service("x", 200, 6000)
 
                 elif (current_pos == 2):
