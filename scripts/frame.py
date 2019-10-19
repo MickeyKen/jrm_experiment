@@ -64,7 +64,7 @@ class Control():
         pantilt_message.speed.x = 0.5
         pantilt_message.speed.y = 0.5
         pantilt_message.speed.z = 0.0
-        pantilt_message.position.x = 0.0
+        pantilt_message.position.x = -1.57
         pantilt_message.position.y = 1.1
         pantilt_message.position.z = 0.0
         pantilt_radian_pub.publish(pantilt_message)
@@ -85,10 +85,10 @@ class Control():
                 if (current_pos == 1):
                     pass
                 elif (current_pos == 2):
-                    self.move(current_pos, 1, 1.0, 2.5)
+                    self.move(current_pos, 1, -1.0, -2.5)
 
                 elif (current_pos == 3):
-                    self.move(current_pos, 1, 6.0, 2.5)
+                    self.move(current_pos, 1, -6.0, -2.5)
 
                 else:
                     pass
@@ -98,7 +98,7 @@ class Control():
                 pantilt_message.speed.x = 0.5
                 pantilt_message.speed.y = 0.5
                 pantilt_message.speed.z = 0.0
-                pantilt_message.position.x = 1.57
+                pantilt_message.position.x = -1.57
                 pantilt_message.position.y = 1.1
                 pantilt_message.position.z = 0.0
                 pantilt_radian_pub.publish(pantilt_message)
@@ -107,13 +107,13 @@ class Control():
                 rospy.set_param("/exp_num",a)
 
                 if (current_pos == 1):
-                    self.move(current_pos, 2, -1.0, -2.5)
+                    self.move(current_pos, 2, 1.0, 2.5)
 
                 elif (current_pos == 2):
                     pass
 
                 elif (current_pos == 3):
-                    self.move(current_pos, 2, 5.0, 0.0)
+                    self.move(current_pos, 2, -5.0, 0.0)
 
                 else:
                     pass
@@ -122,7 +122,7 @@ class Control():
                 pantilt_message.speed.x = 0.5
                 pantilt_message.speed.y = 0.5
                 pantilt_message.speed.z = 0.0
-                pantilt_message.position.x = 0.78
+                pantilt_message.position.x = -2.35
                 pantilt_message.position.y = 1.1
                 pantilt_message.position.z = 0.0
                 pantilt_radian_pub.publish(pantilt_message)
@@ -132,10 +132,10 @@ class Control():
                 rospy.set_param("/exp_num", a)
 
                 if (current_pos == 1):
-                    self.move(current_pos, 3, -6.0, -2.5)
+                    self.move(current_pos, 3, 6.0, 2.5)
 
                 elif (current_pos == 2):
-                    self.move(current_pos, 3, -5.0, 0.0)
+                    self.move(current_pos, 3, 5.0, 0.0)
 
                 elif (current_pos == 3):
                     pass
@@ -147,13 +147,15 @@ class Control():
                 pantilt_message.speed.x = 0.5
                 pantilt_message.speed.y = 0.5
                 pantilt_message.speed.z = 0.0
-                pantilt_message.position.x = -0.78
+                pantilt_message.position.x = -3.91
                 pantilt_message.position.y = 1.1
                 pantilt_message.position.z = 0.0
                 pantilt_radian_pub.publish(pantilt_message)
 
 
             elif a == 0:
+                rospy.set_param("/exp_miki_img/switch", 0)
+                rospy.set_param("/black_img/switch", 0)
                 sys.exit()
             else:
                 pass
@@ -192,8 +194,8 @@ class Control():
                 while( current_y_distance < abs(y)):
                     (position, rotation) = self.get_odom()
                     current_y_distance = sqrt(pow((position.y - initial_y), 2))
-                    if (self.vel_msg.linear.y >= -0.3):
-                        self.vel_msg.linear.y -= 0.03
+                    if (self.vel_msg.linear.y <= 0.3):
+                        self.vel_msg.linear.y += 0.03
                     self.pub_vel.publish(self.vel_msg)
                     self.r.sleep()
 
@@ -208,8 +210,8 @@ class Control():
                 while( current_x_distance < abs(x)):
                     (position, rotation) = self.get_odom()
                     current_x_distance = sqrt(pow((position.x - initial_x), 2))
-                    if (self.vel_msg.linear.x >= -0.3):
-                        self.vel_msg.linear.x -= 0.03
+                    if (self.vel_msg.linear.x <= 0.3):
+                        self.vel_msg.linear.x += 0.03
                     self.pub_vel.publish(self.vel_msg)
                     self.r.sleep()
 
@@ -223,8 +225,8 @@ class Control():
                 while( current_x_distance < abs(x)):
                     (position, rotation) = self.get_odom()
                     current_x_distance = sqrt(pow((position.x - initial_x), 2))
-                    if (self.vel_msg.linear.x <= +0.3):
-                        self.vel_msg.linear.x += 0.03
+                    if (self.vel_msg.linear.x >= -0.3):
+                        self.vel_msg.linear.x -= 0.03
                     self.pub_vel.publish(self.vel_msg)
                     self.r.sleep()
 
@@ -238,8 +240,8 @@ class Control():
                 while( current_y_distance < abs(y)):
                     (position, rotation) = self.get_odom()
                     current_y_distance = sqrt(pow((position.y - initial_y), 2))
-                    if (self.vel_msg.linear.y <= 0.3):
-                        self.vel_msg.linear.y += 0.03
+                    if (self.vel_msg.linear.y >= -0.3):
+                        self.vel_msg.linear.y -= 0.03
                     self.pub_vel.publish(self.vel_msg)
                     self.r.sleep()
 
