@@ -7,4 +7,6 @@
 
     <node pkg="jrm_experiment" name="black_img" type="black_img.py" output="screen"/>
 
+    <node pkg="jrm_experiment" name="youbot_service_server" type="youbot_service_server.py" output="screen"/>
+
 </launch>
