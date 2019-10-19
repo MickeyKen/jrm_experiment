@@ -12,7 +12,7 @@ def callback(data):
 
     tilt_message = Float64()
 
-    time.sleep(1)
+    time.sleep(2)
 
     tilt_speed= 0.3
 
