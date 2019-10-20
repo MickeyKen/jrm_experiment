@@ -1,5 +1,6 @@
 <launch>
-
+    <include file="$(find ubiquitous_display_bringup)/launch/ubiquitous_display_model.launch"/>
+    <include file="$(find ubiquitous_display_bringup)/launch/ubiquitous_display_pantilt.launch"/>
     <arg name="gui" default="false"/>
 
     <node pkg="ubiquitous_display_pantilt" name="control_pantilt" type="control_pantilt.py" output="screen" />
@@ -9,7 +10,5 @@
     <node pkg="jrm_experiment" name="pantilt" type="pantilt.py"/>
 
     <node pkg="jrm_experiment" name="youbot_service_server" type="youbot_service_server.py" output="screen"/>
-    <!-- <group if="$(arg gui)">
-      <remap
-    </group> -->
+
 </launch>

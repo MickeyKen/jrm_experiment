@@ -6,7 +6,7 @@ from std_msgs.msg import Float64
 import time
 from ubiquitous_display_pantilt.msg import Pantilt
 from ubiquitous_display_msgs.srv import *
-
+from dynamixel_controllers.srv import SetSpeed
 
 class Control():
     def __init__(self):
@@ -28,12 +28,14 @@ class Control():
         rospy.set_param("/exp_num",exp_num)
         rospy.set_param("/exp_pos",exp_pos)
 
-        self.make_pantilt(0.5,0.5,0.0,-1.57,1.1,0.0)
+        self.make_pantilt(0.5,0.5,0.0,-1.57,0.0,0.0)
 
         while True:
             a = input("Input exp_num: >>")
             current_pos = rospy.get_param("exp_pos")
             rospy.set_param("/exp_miki_img/switch", 0)
+            set_tilt_speed = rospy.ServiceProxy('/tilt_controller/set_speed', SetSpeed)
+            set_tilt_speed(0.3)
             pub_tilt.publish(float_tilt)
             time.sleep(3)
 
@@ -43,53 +45,61 @@ class Control():
                 if (current_pos == 1):
                     pass
                 elif (current_pos == 2):
-                    self.youbot_service("x", -200, 1000)
+                    # self.youbot_service("x", -200, 1000)
                     time.sleep(1)
-                    self.youbot_service("y", -200, 2500)
+                    # self.youbot_service("y", -200, 2500)
 
                 elif (current_pos == 3):
-                    self.youbot_service("x", -200, 6000)
+                    # self.youbot_service("x", -200, 6000)
                     time.sleep(1)
-                    self.youbot_service("y", -200, 2500)
+                    # self.youbot_service("y", -200, 2500)
 
                 else:
                     pass
 
                 rospy.set_param("/exp_pos",1)
 
-                self.make_pantilt(0.5,0.5,0.0,-1.57,1.1,0.0)
+                if a == 1:
+                    self.make_pantilt(0.5,0.5,0.0,-1.57,0.5,0.0)
+                else:
+                    self.make_pantilt(0.5,0.5,0.0,-1.57,1.1,0.0)
 
             elif a == 5 or a == 6 or a == 7 or a == 8:
                 rospy.set_param("/exp_num",a)
 
                 if (current_pos == 1):
-                    self.youbot_service("y", 200, 2500)
+                    # self.youbot_service("y", 200, 2500)
                     time.sleep(1)
-                    self.youbot_service("x", 200, 1000)
+                    # self.youbot_service("x", 200, 1000)
 
                 elif (current_pos == 2):
                     pass
 
                 elif (current_pos == 3):
-                    self.youbot_service("x", -200, 5000)
+                    # self.youbot_service("x", -200, 5000)
+                    pass
 
                 else:
                     pass
                 rospy.set_param("/exp_pos",2)
 
-                self.make_pantilt(0.5,0.5,0.0,-2.35,1.1,0.0)
+                if a == 5:
+                    self.make_pantilt(0.5,0.5,0.0,-2.35,0.5,0.0)
+                else:
+                    self.make_pantilt(0.5,0.5,0.0,-2.35,1.1,0.0)
 
 
             elif a == 9 or a == 10 or a == 11 or a ==12:
                 rospy.set_param("/exp_num", a)
 
                 if (current_pos == 1):
-                    self.youbot_service("y", 200, 2500)
+                    # self.youbot_service("y", 200, 2500)
                     time.sleep(1)
-                    self.youbot_service("x", 200, 6000)
+                    # self.youbot_service("x", 200, 6000)
 
                 elif (current_pos == 2):
-                    self.youbot_service("x", 200, 5000)
+                    # self.youbot_service("x", 200, 5000)
+                    pass
 
                 elif (current_pos == 3):
                     pass
@@ -98,7 +108,10 @@ class Control():
                     pass
                 rospy.set_param("/exp_pos",3)
 
-                self.make_pantilt(0.5,0.5,0.0,-3.91,1.1,0.0)
+                if a == 9:
+                    self.make_pantilt(0.5,0.5,0.0,-3.91,0.5,0.0)
+                else:
+                    self.make_pantilt(0.5,0.5,0.0,-3.91,1.1,0.0)
 
             elif a == 0:
                 rospy.set_param("/exp_miki_img/switch", 0)

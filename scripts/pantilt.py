@@ -15,18 +15,16 @@ def callback(data):
 
     tilt_speed= 0.3
 
-
-    if (exp_num == 1 or exp_num == 5 or exp_num == 9):
-        tilt_speed= 0.3
-
     # slow
-    elif (exp_num == 2 or exp_num  == 6 or exp_num == 10):
+    if (exp_num == 2 or exp_num  == 6 or exp_num == 10):
         if exp_num == 2:
             tilt_speed= 0.06
         elif exp_num == 6:
             tilt_speed= 0.06
-        else:
+        elif exp_num == 10:
             tilt_speed= 0.06
+        else:
+            tilt_speed = tilt_speed
 
     # mediaum
     elif (exp_num == 3 or exp_num == 7 or exp_num == 11):
@@ -34,8 +32,10 @@ def callback(data):
             tilt_speed= 1.26
         elif exp_num == 7:
             tilt_speed= 0.72
-        else:
+        elif exp_num == 11:
             tilt_speed= 0.54
+        else:
+            tilt_speed = tilt_speed
 
     # fast
     elif (exp_num == 4 or exp_num  == 8 or exp_num == 12):
@@ -43,8 +43,10 @@ def callback(data):
             tilt_speed= 2.52
         elif exp_num == 8:
             tilt_speed= 1.44
-        else:
+        elif exp_num == 12:
             tilt_speed= 1.08
+        else:
+            tilt_speed = tilt_speed
     else:
         pass
 
