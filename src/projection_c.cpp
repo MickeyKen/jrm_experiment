@@ -29,8 +29,9 @@ void Callback(const std_msgs::Int16& msg)
     float size = 800 / 2;
     int ran = rand() % 10;
     if (ran % 2 == 0) {
-      ran = ran + 1;
+
     } else {
+      ran = ran + 1;
 
     }
     ///// get image and resize projectr size
