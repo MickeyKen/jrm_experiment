@@ -161,6 +161,8 @@ add_executable(projection_b src/projection_b.cpp)
 target_link_libraries(projection_b ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 add_executable(projection_c src/projection_c.cpp)
 target_link_libraries(projection_c ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+add_executable(for_rec src/projector_for_video.cpp)
+target_link_libraries(for_rec ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 #############
 ## Install ##
 #############
