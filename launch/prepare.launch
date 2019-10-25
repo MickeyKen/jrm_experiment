@@ -9,4 +9,6 @@
 
     <node pkg="jrm_experiment" name="youbot_service_server" type="youbot_service_server.py" output="screen"/>
 
+    <node pkg="jrm_experiment" name="fast_pantilt_server" type="pantilt_move_for_fast.py" output="screen" />
+
 </launch>
