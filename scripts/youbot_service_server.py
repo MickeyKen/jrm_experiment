@@ -63,7 +63,7 @@ class Server(Publishsers):
 
     def service_callback(self, req):
         result = Bool()
-        result = False
+        result.data = False
 
         order = str(req.direction.data)
 
