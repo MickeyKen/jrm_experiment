@@ -51,14 +51,14 @@ class Control():
                 if (current_pos == 1):
                     pass
                 elif (current_pos == 2):
-                    self.youbot_service("x", -200, 1000)
+                    self.youbot_service("x", -100, 1000)
                     time.sleep(1)
-                    self.youbot_service("y", -200, 2500)
+                    self.youbot_service("y", -100, 2500)
 
                 elif (current_pos == 3):
-                    self.youbot_service("x", -200, 6000)
+                    self.youbot_service("x", -100, 6000)
                     time.sleep(1)
-                    self.youbot_service("y", -200, 2500)
+                    self.youbot_service("y", -100, 2500)
 
                 else:
                     pass
@@ -77,15 +77,15 @@ class Control():
                 rospy.set_param("/exp_num",a)
 
                 if (current_pos == 1):
-                    self.youbot_service("y", 200, 2500)
+                    self.youbot_service("y", 100, 2500)
                     time.sleep(1)
-                    self.youbot_service("x", 200, 1000)
+                    self.youbot_service("x", 100, 1000)
 
                 elif (current_pos == 2):
                     pass
 
                 elif (current_pos == 3):
-                    self.youbot_service("x", -200, 5000)
+                    self.youbot_service("x", -100, 5000)
                     pass
 
                 else:
@@ -105,12 +105,12 @@ class Control():
                 rospy.set_param("/exp_num", a)
 
                 if (current_pos == 1):
-                    self.youbot_service("y", 200, 2500)
+                    self.youbot_service("y", 100, 2500)
                     time.sleep(1)
-                    self.youbot_service("x", 200, 6000)
+                    self.youbot_service("x", 100, 6000)
 
                 elif (current_pos == 2):
-                    self.youbot_service("x", 200, 5000)
+                    self.youbot_service("x", 100, 5000)
                     pass
 
                 elif (current_pos == 3):
